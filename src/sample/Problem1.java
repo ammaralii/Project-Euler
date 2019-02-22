@@ -15,6 +15,14 @@ public class Problem1 {
         }
         return total;
     }
+
+    public static int getSolutionUsingStreams(int limit){
+        List<Integer> range = IntStream.rangeClosed(1, 999)
+                .boxed().collect(Collectors.toList());
+
+        return range.stream().filter(i -> i%3 == 0 || i%5==0).mapToInt(i -> i.intValue()).sum();
+    }
+
     //This is solution which must be used
     public static BigInteger sumDivisibleBy(BigInteger number, BigInteger target){
         BigInteger temp = target.subtract(BigInteger.ONE).divide(number);
