@@ -12,8 +12,9 @@ public class Problem3 {
     }
 
     /**
+     * Method use to get find largest prime factor of specific input param pass
      * @see <a href="https://www.geeksforgeeks.org/java-program-for-find-largest-prime-factor-of-a-number/">find largest prime factor</a>
-     * @param n
+     * @param n input number
      * @return largest prime factor
      */
     public static long largestPrimeFactor(long n){
