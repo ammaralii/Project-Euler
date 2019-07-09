@@ -1,5 +1,6 @@
 package sample;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,8 +11,9 @@ import java.util.List;
  */
 public class Problem5 {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
-        System.out.println(getSmallestNumber(numbers));
+//        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
+//        System.out.println(getSmallestNumber(numbers));
+        System.out.println(run(20));
     }
 
     //My Solution
@@ -36,5 +38,18 @@ public class Problem5 {
             }
         }
         return flag;
+    }
+
+    //Optimized Code
+    public static String run(Integer limit) {
+        BigInteger allLcm = BigInteger.ONE;
+        for (int i = 1; i <= limit; i++)
+            allLcm = lcm(BigInteger.valueOf(i), allLcm);
+        return allLcm.toString();
+    }
+
+
+    private static BigInteger lcm(BigInteger x, BigInteger y) {
+        return x.divide(x.gcd(y)).multiply(y);
     }
 }
