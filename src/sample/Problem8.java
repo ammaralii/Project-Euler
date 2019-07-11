@@ -54,24 +54,19 @@ public class Problem8 {
         System.out.println(getGreatestProductAccordingToAdjacent(number, 13));
     }
 
-    public static Integer getGreatestProductAccordingToAdjacent(String number, Integer adjacent) {
-        Integer maxValue = 0;
+    public static long getGreatestProductAccordingToAdjacent(String number, Integer adjacent) {
+        long maxValue = -1;
         String maxValueKey = "";
-        for (int i=0;i<number.length();i++){
-            if(i+adjacent<number.length()) {
-                String adjacentNumber = number.substring(i, i + adjacent);
-                List<String> numbersToMultiply = Arrays.asList(adjacentNumber.split("(?<=\\G.)"));
-                Integer result = 1;
-                for (int j = 0; j < numbersToMultiply.size(); j++) {
-                    result = result * Integer.valueOf(numbersToMultiply.get(j));
-                }
-                if(result>maxValue){
-                    maxValue = result;
-                    maxValueKey = adjacentNumber;
-                }
+        for (int i = 0; i + adjacent < number.length(); i++) {
+            long product = 1;
+            for (int j = 0; j < adjacent; j++)
+                product *= number.charAt(i + j)-'0';
+            if (product >= maxValue) {
+                maxValue = product;
+                maxValueKey = number.substring(i,i+adjacent);
             }
         }
-        System.out.println("Key is:"+maxValueKey);
+        System.out.println("Key is:" + maxValueKey);
         return maxValue;
     }
 }
